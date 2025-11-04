@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Sanori Menezes — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-1:#030307; --bg-2:#061229; --bg-3:#0b0530;
+  --muted:#9fb0c7; --accent-a:#6f56ff; --accent-b:#28b8ff;
+  --maxwidth:1150px; --transition:220ms cubic-bezier(.2,.9,.2,1);
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:
+    radial-gradient(900px 400px at 8% 12%, rgba(111,86,255,0.08), transparent 8%),
+    radial-gradient(800px 360px at 92% 88%, rgba(40,183,255,0.05), transparent 6%),
+    linear-gradient(180deg,var(--bg-1) 0%, var(--bg-2) 45%, var(--bg-3) 100%);
+  color:#e9f3fb;font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;scroll-behavior:smooth;
+  padding:50px 20px;display:flex;justify-content:center;
+}
+.wrap{max-width:var(--maxwidth);width:100%}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-bottom:40px}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:70px;height:70px;border-radius:14px;overflow:hidden;
+  background:linear-gradient(135deg,var(--accent-a),var(--accent-b));
+  box-shadow:0 10px 36px rgba(44,20,120,0.28);}
+.logo img{width:100%;height:100%;object-fit:cover}
+.brand-info h1{font-size:22px;font-weight:700;margin-bottom:6px;position:relative}
+.brand-info h1::after{
+  content:"";position:absolute;left:0;bottom:-3px;width:60%;height:4px;
+  border-radius:999px;background:linear-gradient(90deg,rgba(111,86,255,0.25),rgba(40,183,255,0.2));
+  filter:blur(8px)}
+.brand-info p{color:var(--muted);font-size:13px}
+nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600;font-size:14px;transition:color var(--transition)}
+nav a:hover{color:var(--accent-b)}
+main{display:grid;grid-template-columns:360px 1fr;gap:40px}
+.card{
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.03);
+  border-radius:14px;
+  padding:30px;
+  box-shadow:0 12px 40px rgba(2,4,8,0.6);
+  margin-bottom:30px;
+  opacity:0;transform:translateY(30px);
+  transition:opacity .6s ease,transform .6s ease;
+}
+.card.visible{opacity:1;transform:translateY(0)}
+.profile-photo{height:380px;border-radius:12px;overflow:hidden;margin-bottom:20px}
+.profile-photo img{width:100%;height:100%;object-fit:cover}
+.contact{font-size:14px;display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.contact a{color:var(--muted);text-decoration:none}
+.contact a:hover{color:var(--accent-b)}
+.section-title{font-weight:700;margin:10px 0 14px;color:var(--muted);font-size:14px}
+.social-btns{display:flex;flex-direction:column;gap:12px;margin-top:10px}
+.social-btn{
+  text-align:center;
+  padding:12px 14px;
+  border-radius:10px;
+  background:linear-gradient(90deg,var(--accent-a),var(--accent-b));
+  color:#061018;
+  font-weight:700;
+  text-decoration:none;
+  font-size:15px;
+  box-shadow:0 8px 25px rgba(111,86,255,0.18);
+  transition:transform var(--transition),box-shadow var(--transition)}
+.social-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(111,86,255,0.25)}
+.skills-dashboard{
+  display:flex;flex-direction:column;gap:15px;margin-bottom:20px;
+}
+.skill-bar span{display:block;font-weight:600;margin-bottom:6px;color:#fff}
+.bar{width:100%;height:18px;background:rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#6f56ff,#28b8ff);border-radius:12px;animation: fillBar 2s forwards;}
+@keyframes fillBar{from{width:0;}to{width:var(--width);}}
+.download-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));color:#061018;font-weight:700;text-decoration:none;box-shadow:0 10px 30px rgba(111,86,255,0.12);margin-top:8px;transition:transform var(--transition)}
+.download-btn:hover{transform:translateY(-2px)}
+.section-heading{margin:0 0 16px;font-size:22px;display:inline-block;cursor:default}
+.muted{color:var(--muted);font-size:15px}
+.quote{margin-top:18px;font-size:20px;font-weight:700;text-align:center;background:linear-gradient(90deg,#6f56ff,#28b8ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 12px rgba(111,86,255,0.35);display:inline-block;animation:bounce 1s infinite alternate;}
+@keyframes bounce{0%{transform:translateY(0)}50%{transform:translateY(-8px)}100%{transform:translateY(0)}}
+.tedx-wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.tedx-wrap img{width:140px;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.4)}
+.projects-grid{display:flex;flex-wrap:wrap;gap:20px}
+.project-card{flex:1;min-width:250px;background:rgba(255,255,255,0.03);border-radius:12px;padding:18px;box-shadow:0 6px 22px rgba(2,4,8,0.5);transition:transform .3s,box-shadow .3s;cursor:pointer}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 35px rgba(111,86,255,0.2)}
+.mini-projects{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
+.mini{background:rgba(255,255,255,0.03);padding:10px 14px;border-radius:8px;font-size:14px;transition:transform .3s;cursor:pointer}
+.mini:hover{transform:translateY(-3px)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:14px}
+.gal-item{height:200px;border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .3s}
+.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal-item:hover{transform:translateY(-4px)}
+.gal-item:hover img{transform:scale(1.05)}
+.footer{text-align:center;color:var(--muted);margin-top:40px;font-size:14px}
+.heading-jump span{display:inline-block;transition:transform 0.3s;cursor:default;}
+.heading-jump span:hover{transform:translateY(-8px);color:#6f56ff;}
+.float-bubbles{position:relative;width:100%;display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.float-bubbles span{display:inline-block;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));color:#061018;padding:6px 12px;border-radius:8px;font-weight:700;font-size:14px;animation:float 4s ease-in-out infinite alternate;}
+@keyframes float{0%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-10px) rotate(-5deg);}100%{transform:translateY(0) rotate(5deg);}}
+@media(max-width:980px){main{grid-template-columns:1fr}.projects-grid{flex-direction:column}.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.gallery-grid{grid-template-columns:1fr}.logo{width:52px;height:52px}.tedx-wrap img{width:120px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="brand">
+<div class="logo"><img src="profile sanori.jpg" alt="Sanori"></div>
+<div class="brand-info">
+<h1>Sanori Menezes</h1>
+<p>Computer Engineering student • Creative explorer of code & design</p>
+</div>
+</div>
+<nav>
+<a href="#about">About</a>
+<a href="#projects">Projects</a>
+<a href="#creative">Creative Showcase</a>
+<a href="#gallery">Gallery</a>
+<a href="#certificates">Certificates</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<main>
+<aside class="card">
+<div class="profile-photo"><img src="profile sanori.jpg" alt="Profile"></div>
+<div class="contact">
+<div><strong>Phone</strong><br><a href="tel:+917385059810">+91 73850 59810</a></div>
+<div><strong>Email</strong><br><a href="mailto:menezessanori3@gmail.com">menezessanori3@gmail.com</a></div>
+<div><strong>Location</strong><br><span class="muted">Akkarbhat, Nanbhat — Virar West</span></div>
+</div>
+<div class="section-title">Social Links</div>
+<div class="social-btns">
+<a class="social-btn" href="https://www.instagram.com/sanorimenezes" target="_blank">Instagram</a>
+<a class="social-btn" href="https://linkedin.com/in/sanorimenezes" target="_blank">LinkedIn</a>
+<a class="social-btn" href="https://github.com/menezessanori20" target="_blank">GitHub</a>
+</div>
+<div class="section-title">Key Skills</div>
+<div class="skills-dashboard">
+<div class="skill-bar"><span>C Programming</span><div class="bar"><div class="fill" style="--width:90%;"></div></div></div>
+<div class="skill-bar"><span>Python</span><div class="bar"><div class="fill" style="--width:85%;"></div></div></div>
+<div class="skill-bar"><span>HTML & CSS</span><div class="bar"><div class="fill" style="--width:95%;"></div></div></div>
+<div class="skill-bar"><span>Web Designing</span><div class="bar"><div class="fill" style="--width:80%;"></div></div></div>
+<div class="skill-bar"><span>Simplilearn Certified Courses</span><div class="bar"><div class="fill" style="--width:70%;"></div></div></div>
+<div class="skill-bar"><span>Slide Presentations</span><div class="bar"><div class="fill" style="--width:75%;"></div></div></div>
+<div class="skill-bar"><span>Teamwork & Event Organization</span><div class="bar"><div class="fill" style="--width:85%;"></div></div></div>
+<div class="skill-bar"><span>Problem Solving</span><div class="bar"><div class="fill" style="--width:80%;"></div></div></div>
+<div class="skill-bar"><span>UI/UX Design</span><div class="bar"><div class="fill" style="--width:75%;"></div></div></div>
+</div>
+<a class="download-btn" href="sanori..resume.pdf" download>⤓ Download Resume</a>
+</aside>
+
+<section>
+<!-- About Section -->
+<div class="card" id="about">
+<h2 class="section-heading heading-jump"><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span> <span>M</span><span>e</span></h2>
+<p class="muted">I’m a Computer Engineering student at FR.CONCEICAO RODRIGUES COLLEGE OF ENGINEERING (2025-2029)and creative explorer of code and design. I enjoy building small projects, organizing events, and learning new tools that bridge engineering with visual design.</p>
+<div class="quote">“Driven by curiosity, powered by logic, and guided by innovation.”</div>
+<div class="float-bubbles">
+<span>Web Designing</span>
+<span>Python</span>
+<span>HTML & CSS</span>
+<span>Problem Solving</span>
+<span>Teamwork</span>
+<span>Event Management</span>
+<span>UI/UX Design</span>
+</div>
+</div>
+
+<!-- TEDx Section -->
+<div class="card" id="tedx">
+<h2 class="section-heading heading-jump"><span>T</span><span>E</span><span>D</span><span>x</span> <span>I</span><span>n</span><span>t</span><span>e</span><span>r</span><span>n</span><span>s</span><span>h</span><span>i</span><span>p</span></h2>
+<div class="tedx-wrap">
+<img src="tedx.prof.jpg" alt="TEDx ID Card">
+<p class="muted">As a General Body Member and Coordinator at TEDx Internship Expo, I handled processes, assisted speakers, managed event coordination, and contributed ideas for better engagement.</p>
+</div>
+</div>
+
+<!-- Projects Section -->
+<div class="card" id="projects">
+<h2 class="section-heading heading-jump"><span>P</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>s</span></h2>
+<div class="projects-grid">
+<div class="project-card">
+<h3>Trufo App (Frontend)</h3>
+<img src="app trufo.jpg" alt="Trufo App" style="width:100%;border-radius:12px;margin-top:10px;">
+<p class="muted">A modern frontend app I developed to showcase productivity and UI skills with clean animations.</p>
+</div>
+<div class="project-card"><h3>Portfolio Website</h3>
+<p class="muted">Personal portfolio built with HTML/CSS featuring interactive gallery and dark aesthetic.</p></div>
+<div class="project-card"><h3>Event Registration Page</h3>
+<p class="muted">A responsive registration form for college events, focusing on usability and design clarity.</p></div>
+</div>
+<h3 style="margin-top:20px">Mini Projects</h3>
+<div class="mini-projects">
+<div class="mini">Random Quote Generator</div>
+<div class="mini">To-Do List App</div>
+<div class="mini">Weather Dashboard</div>
+<div class="mini">Presentation Slides</div>
+</div>
+</div>
+
+<!-- Creative Showcase -->
+<div class="card" id="creative">
+<h2 class="section-heading heading-jump"><span>C</span><span>r</span><span>e</span><span>a</span><span>t</span><span>i</span><span>v</span><span>e</span> <span>S</span><span>h</span><span>o</span><span>w</span><span>c</span><span>a</span><span>s</span><span>e</span></h2>
+<div class="gallery-grid">
+<div class="gal-item"><img src="creative showcase.1.jpg" alt="Creative 1"></div>
+<div class="gal-item"><img src="creative showcase.2.jpg" alt="Creative 2"></div>
+<div class="gal-item"><img src="creative showcase.3.jpg" alt="Creative 3"></div>
+</div>
+</div>
+
+<!-- Gallery -->
+<div class="card" id="gallery">
+<h2 class="section-heading heading-jump"><span>G</span><span>a</span><span>l</span><span>l</span><span>e</span><span>r</span><span>y</span></h2>
+<div class="gallery-grid">
+<div class="gal-item"><img src="photo dump3.jpg" alt="Photo 3"></div>
+<div class="gal-item"><img src="photodump1.jpg" alt="Photo 1"></div>
+<div class="gal-item"><img src="photodump2.jpg" alt="Photo 2"></div>
+<div class="gal-item"><img src="photo dump 4.jpg" alt="Photo 4"></div>
+<div class="gal-item"><img src="photo dump 5.jpg" alt="Photo 5"></div>
+<div class="gal-item"><img src="photo dump 6.jpg" alt="Photo 6"></div>
+</div>
+</div>
+
+<!-- Certificates Section -->
+<div class="card" id="certificates">
+<h2 class="section-heading heading-jump"><span>C</span><span>e</span><span>r</span><span>t</span><span>i</span><span>f</span><span>i</span><span>c</span><span>a</span><span>t</span><span>e</span><span>s</span></h2>
+<div class="gallery-grid">
+<div class="gal-item"><img src="certificate.1.jpg" alt="Certificate 1"></div>
+<div class="gal-item"><img src="certificate.2.jpg" alt="Certificate 2"></div>
+<div class="gal-item"><img src="certificate.3.jpg" alt="Certificate 3"></div>
+<div class="gal-item"><img src="certificate.4.jpg" alt="Certificate 4"></div>
+</div>
+</div>
+
+<!-- Contact Section -->
+<div class="card" id="contact">
+<h2 class="section-heading heading-jump"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></h2>
+<p class="muted">You can reach me at my email or phone above. Let's connect and create something impactful together 🌟</p>
+</div>
+
+<footer>
+© 2025 Sanori Menezes • Designed & Developed with 💜
+</footer>
+</section>
+</main>
+</div>
+
+<script>
+// Scroll fade animation
+const cards = document.querySelectorAll('.card');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+cards.forEach(c => obs.observe(c));
+</script>
+</body>
+</html>
